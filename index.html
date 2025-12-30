@@ -445,7 +445,7 @@
 
           <div class="row">
             <div class="left">
-              <div class="label">Address</div>
+              <div class="label">Admistrative Codes</div>
               <div class="value" id="adminCodes" class="wrap-anywhere">District Srikakulam • Mandal Gara • Panchayat Buravalli • Village Buravalli</div>
             </div>
           </div>
@@ -586,7 +586,7 @@
         `${g.village.name}, ${g.mandal.name}, ${g.district.name}`;
 
       document.getElementById("adminCodes").textContent =
-        `District ${g.district.code} • Mandal ${g.mandal.code} • Panchayat ${g.panchayat.code} • Village ${g.village.code}`;
+        `District ${g.district.name} • Mandal ${g.mandal.name} • Panchayat ${g.panchayat.name} • Village ${g.village.name}`;
 
       // Geo notice
       const geoOk = (g.geo.lat !== 0.0 || g.geo.lon !== 0.0);
