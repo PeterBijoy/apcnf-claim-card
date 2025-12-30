@@ -1,0 +1,636 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Andhra Pradesh Community Natural Farming</title>
+  <style>
+    :root{
+      --bg:#F4F7F5;
+      --card:#FFFFFF;
+      --text:#0F172A;
+      --muted:#475569;
+      --border:#E2E8F0;
+
+      --green:#2E7D32;
+      --green2:#66BB6A;
+
+      --amber:#F9A825;
+      --amberBg:#FFF7E0;
+
+      --chipBg:#E8F5E9;
+
+      --shadow: 0 10px 25px rgba(2, 6, 23, 0.08);
+      --radius: 18px;
+    }
+
+    *{ box-sizing:border-box; }
+    body{
+      margin:0;
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
+      background: var(--bg);
+      color: var(--text);
+    }
+
+    .wrap{
+      max-width: 480px;
+      margin: 0 auto;
+      padding: 18px 14px 30px;
+    }
+
+    header{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:10px;
+      padding: 8px 6px 14px;
+    }
+    .brand{
+      display:flex;
+      align-items:center;
+      gap:10px;
+    }
+    .logo{
+      width:34px; height:34px;
+      border-radius:10px;
+      background: linear-gradient(135deg, var(--green), var(--green2));
+      box-shadow: 0 6px 14px rgba(46,125,50,0.25);
+    }
+    .brand h1{
+      font-size: 16px;
+      margin:0;
+      line-height:1.1;
+    }
+    .brand p{
+      margin:0;
+      font-size:12px;
+      color: var(--muted);
+    }
+    .icon-btn{
+      border:1px solid var(--border);
+      background: var(--card);
+      border-radius: 12px;
+      padding: 10px 12px;
+      cursor:pointer;
+      box-shadow: 0 6px 14px rgba(2, 6, 23, 0.04);
+    }
+
+    .card{
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      overflow:hidden;
+      margin-bottom: 14px;
+    }
+
+    .hero{
+      padding: 16px 16px 12px;
+      background:
+        radial-gradient(1200px 600px at 10% -10%, rgba(102,187,106,0.25), transparent 60%),
+        radial-gradient(900px 500px at 110% 10%, rgba(46,125,50,0.18), transparent 55%),
+        var(--card);
+    }
+
+    .chips{
+      display:flex;
+      flex-wrap:wrap;
+      gap:8px;
+      margin-bottom: 12px;
+    }
+    .chip{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      padding: 8px 10px;
+      border-radius: 999px;
+      background: var(--chipBg);
+      border: 1px solid rgba(46,125,50,0.15);
+      color: var(--green);
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.2px;
+      user-select:none;
+    }
+    .chip .dot{
+      width: 10px; height:10px;
+      border-radius: 50%;
+      background: var(--green);
+      box-shadow: 0 0 0 3px rgba(46,125,50,0.12);
+    }
+
+    .titleRow{
+      display:flex;
+      align-items:flex-start;
+      justify-content:space-between;
+      gap:12px;
+      margin-top: 2px;
+    }
+    .title{
+      margin:0;
+      font-size: 18px;
+      line-height: 1.25;
+    }
+    .subtitle{
+      margin: 6px 0 0;
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.35;
+    }
+
+    .kv{
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+      margin-top: 14px;
+    }
+    .kv .item{
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 10px 10px;
+      background: #FBFCFD;
+    }
+    .kv .k{
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.6px;
+      color: var(--muted);
+      margin-bottom: 6px;
+    }
+    .kv .v{
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--text);
+      line-height: 1.2;
+    }
+
+    .section{
+      padding: 14px 16px;
+      border-top: 1px solid var(--border);
+    }
+    .section h2{
+      margin: 0 0 10px;
+      font-size: 14px;
+      letter-spacing: 0.2px;
+    }
+    .muted{ color: var(--muted); }
+
+    .origin{
+      display:grid;
+      grid-template-columns: 1fr;
+      gap: 10px;
+    }
+    .row{
+      display:flex;
+      align-items:flex-start;
+      justify-content:space-between;
+      gap: 12px;
+      padding: 10px 12px;
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      background: #FBFCFD;
+    }
+    .row .left{
+      display:flex;
+      flex-direction:column;
+      gap: 3px;
+      min-width: 0;
+    }
+    .row .label{
+      font-size: 12px;
+      color: var(--muted);
+    }
+    .row .value{
+      font-size: 14px;
+      font-weight: 700;
+      overflow: visible;
+      text-overflow: initial;
+      white-space: normal;
+      word-break: break-word;
+      overflow-wrap: anywhere;
+    }
+
+    .list{
+      display:flex;
+      flex-direction:column;
+      gap: 10px;
+    }
+    details{
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 10px 12px;
+      background: #FBFCFD;
+    }
+    summary{
+      cursor:pointer;
+      font-weight: 700;
+      font-size: 13px;
+      list-style:none;
+      outline:none;
+    }
+    summary::-webkit-details-marker{ display:none; }
+    .pill{
+      display:inline-block;
+      font-size: 11px;
+      margin-left: 8px;
+      padding: 3px 8px;
+      border-radius: 999px;
+      background: rgba(46,125,50,0.10);
+      color: var(--green);
+      font-weight: 700;
+      border: 1px solid rgba(46,125,50,0.15);
+    }
+    .practice-items{
+      margin: 10px 0 0;
+      padding: 0;
+      list-style: none;
+      display:flex;
+      flex-direction:column;
+      gap: 8px;
+    }
+    .practice-items li{
+      display:flex;
+      align-items:flex-start;
+      gap: 10px;
+      font-size: 13px;
+      color: var(--text);
+      line-height: 1.35;
+      padding-top: 2px;
+    }
+    .check{
+      width:18px; height:18px;
+      border-radius: 6px;
+      background: rgba(46,125,50,0.12);
+      border: 1px solid rgba(46,125,50,0.20);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      color: var(--green);
+      font-weight: 900;
+      flex: 0 0 18px;
+      margin-top: 1px;
+    }
+
+    .program{
+      display:flex;
+      align-items:flex-start;
+      gap: 12px;
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 12px;
+      background: #FBFCFD;
+    }
+    .badge{
+      width: 34px; height: 34px;
+      border-radius: 12px;
+      background: linear-gradient(135deg, rgba(46,125,50,0.16), rgba(102,187,106,0.22));
+      border: 1px solid rgba(46,125,50,0.15);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      font-weight:900;
+      color: var(--green);
+      flex: 0 0 34px;
+    }
+
+    .notice{
+      display:flex;
+      gap: 10px;
+      padding: 12px;
+      border-radius: 14px;
+      border: 1px solid rgba(249,168,37,0.35);
+      background: var(--amberBg);
+      color: #6B4F00;
+      margin-top: 10px;
+    }
+    .notice .i{
+      width: 22px; height: 22px;
+      border-radius: 8px;
+      background: rgba(249,168,37,0.18);
+      border: 1px solid rgba(249,168,37,0.35);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      font-weight: 900;
+      color: #6B4F00;
+      flex: 0 0 22px;
+      margin-top: 1px;
+    }
+    .notice p{
+      margin:0;
+      font-size: 12.5px;
+      line-height: 1.35;
+    }
+
+    .footer{
+      padding: 6px 4px 0;
+      text-align:center;
+      color: var(--muted);
+      font-size: 11.5px;
+    }
+
+    .actions{
+      display:flex;
+      gap: 10px;
+      margin-top: 12px;
+    }
+    .btn{
+      flex: 1;
+      border-radius: 14px;
+      padding: 12px 12px;
+      border: 1px solid var(--border);
+      background: var(--card);
+      cursor:pointer;
+      font-weight: 800;
+      font-size: 13px;
+      box-shadow: 0 8px 18px rgba(2, 6, 23, 0.04);
+    }
+    .btn.primary{
+      background: linear-gradient(135deg, var(--green), var(--green2));
+      color: white;
+      border: none;
+    }
+  
+    .wrap-anywhere{
+      overflow-wrap:anywhere;
+      word-break:break-word;
+    }
+    /* Prevent long tokens from breaking the layout */
+    pre, code, .mono{
+      overflow-wrap:anywhere;
+      word-break:break-word;
+    }
+
+    /* Responsive tweaks */
+    @media (max-width: 380px){
+      .kv{ grid-template-columns: 1fr; }
+      .actions{ flex-direction: column; }
+      .btn{ width: 100%; }
+    }
+    @media (min-width: 640px){
+      .wrap{ max-width: 560px; }
+      .title{ font-size: 20px; }
+    }
+</style>
+</head>
+
+<body>
+  <div class="wrap">
+    <header>
+      <div class="brand">
+        <div class="logo" aria-hidden="true"></div>
+        <div>
+          <h1>Andhra Pradesh Community Natural Farming</h1>
+          <p>Claim Card</p>
+        </div>
+      </div>
+
+    </header>
+
+    <!-- HERO / TRUST -->
+    <section class="card hero" aria-label="Claim Card">
+      <div class="chips" id="chipRow"></div>
+
+      <div class="titleRow">
+        <div>
+          <h2 class="title" id="headline">Paddy • Kharif 2025–26</h2>
+          <p class="subtitle" id="subhead">Grown using natural farming practices, with transparent disclosures.</p>
+        </div>
+      </div>
+
+      <div class="kv" aria-label="Key values">
+        <div class="item">
+          <div class="k">Crop</div>
+          <div class="v" id="crop">Paddy</div>
+        </div>
+        <div class="item">
+          <div class="k">Season / Year</div>
+          <div class="v" id="season">Kharif, 2025–26</div>
+        </div>
+        <div class="item">
+          <div class="k">Area Cultivated</div>
+          <div class="v" id="acreage">1.16 acres</div>
+        </div>
+        <div class="item">
+          <div class="k">Sowing Date</div>
+          <div class="v" id="sowing">12-Sep-2025</div>
+        </div>
+      </div>
+
+      <div class="actions" aria-label="Primary actions">
+        <button class="btn primary" type="button" onclick="scrollToId('details')">View Details</button>
+        <button class="btn" type="button" onclick="scrollToId('practices')">Practices</button>
+      </div>
+    </section>
+
+    <!-- ORIGIN -->
+    <section class="card" id="details" aria-label="Origin and Farmer">
+      <div class="section">
+        <h2>Grown By</h2>
+        <div class="origin">
+          <div class="row">
+            <div class="left">
+              <div class="label">Farmer</div>
+              <div class="value" id="farmerName">Chandravathi Malla</div>
+            </div>
+            <div class="muted" style="font-size:12px; font-weight:700" id="farmerId" class="wrap-anywhere">ID: 103220323568572196</div>
+          </div>
+
+          <div class="row">
+            <div class="left">
+              <div class="label">Location</div>
+              <div class="value" id="location">Buravalli, Gara, Srikakulam</div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="left">
+              <div class="label">Administrative Codes</div>
+              <div class="value" id="adminCodes" class="wrap-anywhere">District 010101 • Mandal 010120 • Panchayat 01012001 • Village 01012001001</div>
+            </div>
+          </div>
+          <div class="notice" id="geoNotice">
+       </div>
+        </div>
+      </div>
+     </section>
+
+    <!-- PRACTICES -->
+    <section class="card" id="practices" aria-label="Practices">
+      <div class="section">
+        <h2>Natural Farming Practices</h2>
+
+        <details open>
+          <summary>Claim Summary <span class="pill" id="claimCount">5 claims</span></summary>
+          <ul class="practice-items" id="claimList"></ul>
+        </details>
+
+        <details>
+          <summary>Practices Applied <span class="pill" id="practiceCount">11 practices</span></summary>
+          <ul class="practice-items" id="practiceList"></ul>
+        </details>
+      </div>
+    </section>
+
+    <!-- PROGRAM -->
+    <section class="card" aria-label="Programme Support">
+      <div class="section">
+        <h2>Programme Support</h2>
+        <div class="program">
+          <div class="badge">S2S</div>
+          <div>
+            <div style="font-weight:900; font-size:13px; margin-bottom:4px;">
+              Supported under Seed-to-Seed (S2S) Natural Farming Programme
+            </div>
+            <div class="muted" style="font-size:12.5px; line-height:1.35;">
+              Practices are program-recorded for monitoring and transparency.
+            </div>
+          </div>
+        </div>
+
+       
+    </section>
+
+    <!-- RAW JSON -->
+    <section class="card" id="rawCard" style="display:none;" aria-label="Raw data">
+      <div class="section">
+        <h2>Raw Data (for QA/Debug)</h2>
+        <pre id="rawJson" class="mono" style="margin:0; white-space:pre-wrap; font-size:12px; color:var(--muted);"></pre>
+      </div>
+    </section>
+
+    <div class="footer">
+      Display is generated from programme-recorded data for the crop instance.
+    </div>
+  </div>
+
+  <script>
+    // Data object (populate from your record)
+    const claimData = {
+      farmer: {
+        id: "103220323568572196",
+        name: "Chandravathi Malla",
+        shg_code: "010120010010102002",
+        vo_code: "010120010010102"
+      },
+      geography: {
+        district: { code: "010101", name: "Srikakulam" },
+        mandal:   { code: "010120", name: "Gara" },
+        panchayat:{ code: "01012001", name: "Buravalli" },
+        village:  { code: "01012001001", name: "Buravalli" },
+        geo: { lat: 0.0, lon: 0.0 }
+      },
+      cropYear: {
+        season_year: "Kharif, 2025–26",
+        crop: "Paddy",
+        crop_type: "Other Crop",
+        is_s2s_crop: true,
+        acreage_acres: 1.16,
+        sowing_date: "12-Sep-2025",
+        nf_category: "S2SW",
+        chemical_free_100: true,
+        a_grade_model: false
+      },
+      claims: [
+        "Natural Farming Practiced",
+        "100% Chemical-Free (Declared)",
+        "Seed-to-Seed (S2S) Participation",
+        "Ecological Pest Management",
+        "Paddy-specific agronomic practice adoption"
+      ],
+      practices: [
+        { category: "Seed Treatment", practice: "Beejamrutham" },
+        { category: "Soil & Nutrition", practice: "Dhravajeevamrutham" },
+        { category: "Biological Inputs", practice: "Application of Azolla" },
+        { category: "Crop Protection", practice: "Botanical Extracts / Kashayams" },
+        { category: "Ecological Control", practice: "Installation of Bird Perches" },
+        { category: "Pest Management", practice: "Installation of Sticky Traps" },
+        { category: "Cropping System", practice: "Border Crops" },
+        { category: "Sowing Method", practice: "Pre-Monsoon Dry Sowing (PMDS)" },
+        { category: "Paddy-Specific", practice: "Clipping of Seedling Leaf Tips (Paddy)" },
+        { category: "Programmatic Support", practice: "S2S Kit" },
+        { category: "Compliance Declaration", practice: "100% Chemical-Free Natural Farming" }
+      ]
+    };
+
+    // Render
+    function init(){
+      // Chips from key claims
+      const chips = [];
+      if (claimData.claims.some(c => c.toLowerCase().includes("natural farming"))) chips.push("Natural Farming");
+      if (claimData.cropYear.chemical_free_100) chips.push("100% Chemical-Free");
+      if (claimData.cropYear.is_s2s_crop) chips.push("Seed-to-Seed (S2S)");
+
+      const chipRow = document.getElementById("chipRow");
+      chipRow.innerHTML = chips.map(t => `
+        <span class="chip"><span class="dot"></span>${escapeHtml(t)}</span>
+      `).join("");
+
+      // Headline
+      document.getElementById("headline").textContent =
+        `${claimData.cropYear.crop} • ${claimData.cropYear.season_year}`;
+
+      // KV
+      document.getElementById("crop").textContent = claimData.cropYear.crop;
+      document.getElementById("season").textContent = claimData.cropYear.season_year;
+      document.getElementById("acreage").textContent = `${claimData.cropYear.acreage_acres} acres`;
+      document.getElementById("sowing").textContent = claimData.cropYear.sowing_date;
+
+      // Farmer
+      document.getElementById("farmerName").textContent = claimData.farmer.name;
+      document.getElementById("farmerId").textContent = `ID: ${claimData.farmer.id}`;
+
+      // Location
+      const g = claimData.geography;
+      document.getElementById("location").textContent =
+        `${g.village.name}, ${g.mandal.name}, ${g.district.name}`;
+
+      document.getElementById("adminCodes").textContent =
+        `District ${g.district.code} • Mandal ${g.mandal.code} • Panchayat ${g.panchayat.code} • Village ${g.village.code}`;
+
+      // Geo notice
+      const geoOk = (g.geo.lat !== 0.0 || g.geo.lon !== 0.0);
+      document.getElementById("geoNotice").style.display = geoOk ? "none" : "flex";
+
+      // Claims list
+      const claimList = document.getElementById("claimList");
+      claimList.innerHTML = claimData.claims.map(c => `
+        <li><span class="check">✓</span><span>${escapeHtml(c)}</span></li>
+      `).join("");
+      document.getElementById("claimCount").textContent = `${claimData.claims.length} claims`;
+
+      // Practices list
+      const practiceList = document.getElementById("practiceList");
+      practiceList.innerHTML = claimData.practices.map(p => `
+        <li><span class="check">✓</span>
+          <span><strong>${escapeHtml(p.practice)}</strong><span class="muted"> — ${escapeHtml(p.category)}</span></span>
+        </li>
+      `).join("");
+      document.getElementById("practiceCount").textContent = `${claimData.practices.length} practices`;
+
+      // Raw JSON
+      document.getElementById("rawJson").textContent = JSON.stringify(claimData, null, 2);
+    }
+
+    function toggleJson(){
+      const el = document.getElementById("rawCard");
+      el.style.display = (el.style.display === "none") ? "block" : "none";
+      if (el.style.display === "block") scrollToId("rawCard");
+    }
+
+    function scrollToId(id){
+      const el = document.getElementById(id);
+      if (!el) return;
+      el.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
+
+    function escapeHtml(str){
+      return String(str).replace(/[&<>"']/g, s => ({
+        "&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"
+      }[s]));
+    }
+
+    init();
+  </script>
+</body>
+</html>
